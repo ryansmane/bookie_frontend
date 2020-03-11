@@ -1,26 +1,56 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
+import Signup from './components/Signup';
+import Login from './components/Login';
+
+import Dashboard from './components/Dashboard';
+import Header from './components/Header';
+// import AgentList from './components/AgentList';
+import AgencyList from './components/AgencyList';
+import AgencyDetail from './components/AgencyDetail';
+import SavedAgents from './components/SavedAgents';
+import AgentProfile from './components/AgentProfile';
+import DraftAndSend from './components/DraftAndSend';
+import AgencySubmitInfo from './components/AgencySubmitInfo';
+import { Route, Switch } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import SetAgentProfile from './components/SetAgentProfile';
 import './App.css';
 
-function App() {
+
+const App = props => {
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <>
+         <header>
+            <Header />
+         </header>
+         <main>
+            <Switch>
+               
+               <Route exact path='/' component={Dashboard} />
+               <Route exact path='/register' component={Signup} />
+               <Route exact path='/login' component={Login} />
+               <Route exact path='/agency-list' component={AgencyList} />
+               <Route exact path='/agency/:id' component={AgencyDetail} />
+               <Route exact path='/saved-agents' component={SavedAgents} />
+               <Route
+                  exact
+                  path='/set-agent-profile'
+                  component={SetAgentProfile}
+               />
+               <Route
+                  exact
+                  path='/agency-submit-info'
+                  component={AgencySubmitInfo}
+               />
+               <Route exact path='/agent/:id' component={AgentProfile} />
+               <Route exact path='/draft-and-send' component={DraftAndSend} />
+
+            </Switch>
+         </main>
+      </>
+   );
 }
 
 export default App;
