@@ -10,7 +10,7 @@ const Signup = props => {
         email: '',
         password: '',
         password2: '',
-        boolean: "0",
+        is_agent: false,
     });
     const [helpText, setHelpText] = useState('')
 
@@ -21,10 +21,11 @@ const Signup = props => {
         } else {
             axios.post(`${url}/register`, credentials).then(res => {
            if (res.data.token) {
-              if (credentials.boolean === "1") {
+              if (credentials.is_agent === true) {
                  console.log(res.data)
                  localStorage.setItem('agentStatus', res.data.boolean)
                  localStorage.setItem('id', res.data.id)
+                 localStorage.setItem('email', res.data.email);
                  localStorage.setItem('token', res.data.token)
                  localStorage.setItem('username', res.data.username)
                  props.history.push('/set-agent-profile')
@@ -48,10 +49,10 @@ const Signup = props => {
    }
 
     const toggleCheckboxThenSend = () => {
-        let status = credentials.boolean === '0' ? '1' : '0'
+        let status = credentials.is_agent === false ? true : false
         setCredentials({
             ...credentials, 
-            boolean: status
+            is_agent: status
         })
     }
 

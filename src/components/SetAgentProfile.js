@@ -11,7 +11,8 @@ const SetAgentProfile = props => {
       last_name: '',
       bio: '',
       genres_of_interest: '',
-      is_open_to_queries: '0',
+      is_open_to_queries: false,
+      submission_email: localStorage.getItem('email'),
       agency: ''
    });
    const [agencies, setAgencies] = useState();
@@ -38,6 +39,7 @@ const SetAgentProfile = props => {
 
    const handleSubmit = e => {
       e.preventDefault();
+      console.log(credentials.submission_email)
       async function postAgent() {
          if (credentials.first_name === '' || credentials.last_name === '') {
             setHelpText('First and Last Name Required');
@@ -50,8 +52,10 @@ const SetAgentProfile = props => {
                   credentials,
                   config
                );
+               console.log(res1)
                localStorage.setItem('isVerifiedAgent', 'true');
                props.history.push('/');
+               window.location.reload()
             } catch (err) {
                setHelpText('Agent Creation Failed');
             }
@@ -62,7 +66,7 @@ const SetAgentProfile = props => {
    };
 
    const handleToggle = e => {
-      let status = credentials.is_open_to_queries === '0' ? '1' : '0';
+      let status = credentials.is_open_to_queries === false ? true : false;
       setCredentials({
          ...credentials,
          is_open_to_queries: status
