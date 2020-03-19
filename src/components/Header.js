@@ -22,7 +22,7 @@ const Header = () => {
         <div className='top-nav'>
             
             
-            <h1>HEADER</h1>
+            <h1>BOOKMAKER</h1>
             {localStorage.agentStatus === 'false' && 
             <>
             <Link to='/agency-list'>View Agencies</Link>
