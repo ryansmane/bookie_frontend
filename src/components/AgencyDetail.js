@@ -9,7 +9,7 @@ const axios = require('axios');
 const AgencyDetail = props => {
    const [agents, setAgents] = useState();
    const [myEmail, setMyEmail] = useState();
-   const url = 'http://localhost:8000';
+   const url = 'https://book-maker-app.herokuapp.com';
    let config = {
       headers: {
          Authorization: `Token ${localStorage.getItem('token')}`
@@ -66,7 +66,9 @@ const AgencyDetail = props => {
                         {/* <Card.Img variant='top' src='' /> */}
                         <Card.Body>
                            <Card.Title>
-                              <h4>{agent.first_name} {agent.last_name}</h4>
+                              <h4>
+                                 {agent.first_name} {agent.last_name}
+                              </h4>
                            </Card.Title>
                            <Card.Text>
                               <h6>About me:</h6>
@@ -91,20 +93,22 @@ const AgencyDetail = props => {
                            </Card.Text>
                            <Card.Text></Card.Text>
                            <div className='save-and-view'>
-                           <Button
-                              href={`/agent/${agent.identity}`}
-                              variant='primary'
-                           >
-                              View Agent Profile
-                           </Button>
-                           {localStorage.getItem('agentStatus') === 'false' && (
-                              <Button className='save-agent'
-                                 onClick={() => saveAgent(agent.identity)}
+                              <Button
+                                 href={`/agent/${agent.identity}`}
                                  variant='primary'
                               >
-                                 Save
+                                 View Agent Profile
                               </Button>
-                           )}
+                              {localStorage.getItem('agentStatus') ===
+                                 'false' && (
+                                 <Button
+                                    className='save-agent'
+                                    onClick={() => saveAgent(agent.identity)}
+                                    variant='primary'
+                                 >
+                                    Save
+                                 </Button>
+                              )}
                            </div>
                         </Card.Body>
                      </Card>

@@ -18,7 +18,7 @@ const SetAgentProfile = props => {
    const [agencies, setAgencies] = useState();
    const [helpText, setHelpText] = useState('');
 
-   const url = 'http://localhost:8000';
+   const url = 'https://book-maker-app.herokuapp.com';
    let config = {
       headers: {
          Authorization: `Token ${localStorage.getItem('token')}`

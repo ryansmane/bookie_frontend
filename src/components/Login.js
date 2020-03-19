@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const axios = require('axios');
 
 const Signup = props => {
-   const url = 'http://localhost:8000';
+   const url = 'https://book-maker-app.herokuapp.com';
    const [credentials, setCredentials] = useState({
       username: '',
       password: ''
