@@ -7,7 +7,7 @@ const axios = require('axios');
 
 const AgencyList = props => {
    const [agencies, setAgencies] = useState();
-   const url = 'http://localhost:8000';
+   const url = 'https://book-maker-app.herokuapp.com';
    let config = {
       headers: {
          Authorization: `Token ${localStorage.getItem('token')}`
@@ -28,24 +28,24 @@ const AgencyList = props => {
 
    return (
       <>
-      <Container className='agency-list'>
-         {agencies &&
-            agencies.map(agency => {
-               return (
-                  <Card style={{ width: '18rem' }}>
-                     <Card.Img variant='top' src={agency.image_url} />
-                     <Card.Body>
-                        <Card.Title>{agency.name}</Card.Title>
-                        <Card.Text>{agency.info}</Card.Text>
-                        <Card.Text>{agency.country}</Card.Text>
-                        <Link to={`agency/${agency.id}`}>
-                           <Button variant='primary'>See Inside</Button>
-                        </Link>
-                     </Card.Body>
-                  </Card>
-               );
-            })}
-      </Container>
+         <Container className='agency-list'>
+            {agencies &&
+               agencies.map(agency => {
+                  return (
+                     <Card style={{ width: '18rem' }}>
+                        <Card.Img variant='top' src={agency.image_url} />
+                        <Card.Body>
+                           <Card.Title>{agency.name}</Card.Title>
+                           <Card.Text>{agency.info}</Card.Text>
+                           <Card.Text>{agency.country}</Card.Text>
+                           <Link to={`agency/${agency.id}`}>
+                              <Button variant='primary'>See Inside</Button>
+                           </Link>
+                        </Card.Body>
+                     </Card>
+                  );
+               })}
+         </Container>
       </>
    );
 };

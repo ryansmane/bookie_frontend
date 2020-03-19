@@ -4,7 +4,7 @@ const axios = require('axios');
 
 const Home = props => {
    const [agent, setAgent] = useState({});
-   const url = 'http://localhost:8000';
+   const url = 'https://book-maker-app.herokuapp.com';
    let config = {
       headers: {
          Authorization: `Token ${localStorage.getItem('token')}`

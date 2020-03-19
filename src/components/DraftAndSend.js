@@ -11,7 +11,7 @@ const DraftAndSend = () => {
    const [draft, setDraft] = useState();
    const [length, setLength] = useState();
    const [parsedDraft, setParsedDraft] = useState();
-   const url = 'http://localhost:8000';
+   const url = 'https://book-maker-app.herokuapp.com';
    let config = {
       headers: {
          Authorization: `Token ${localStorage.getItem('token')}`
