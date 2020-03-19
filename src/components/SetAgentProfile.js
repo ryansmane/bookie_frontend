@@ -26,9 +26,9 @@ const SetAgentProfile = props => {
    };
 
    useEffect(() => {
-       if (localStorage.getItem('agentStatus') === null) {
-           props.history.push('/login')
-       }
+      if (localStorage.getItem('agentStatus') === null) {
+         props.history.push('/login');
+      }
       async function getAgencies() {
          let res1 = await axios.get(`${url}/api/agencies`, config);
          setAgencies(res1.data);
@@ -39,7 +39,7 @@ const SetAgentProfile = props => {
 
    const handleSubmit = e => {
       e.preventDefault();
-      console.log(credentials.submission_email)
+      console.log(credentials.submission_email);
       async function postAgent() {
          if (credentials.first_name === '' || credentials.last_name === '') {
             setHelpText('First and Last Name Required');
@@ -52,10 +52,10 @@ const SetAgentProfile = props => {
                   credentials,
                   config
                );
-               console.log(res1)
+               console.log(res1);
                localStorage.setItem('isVerifiedAgent', 'true');
                props.history.push('/');
-               window.location.reload()
+               window.location.reload();
             } catch (err) {
                setHelpText('Agent Creation Failed');
             }

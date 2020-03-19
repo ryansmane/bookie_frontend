@@ -1,5 +1,17 @@
 .top-nav{
   display: flex;
   flex-direction: row;
+  justify-content: space-evenly;
 }
 
+.agency-list, .agent-list {
+  padding-top: 32px;
+  display: flex;
+  flex-direction: row;
+}
+
+.save-and-view {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}

@@ -11,9 +11,9 @@ const Home = props => {
       }
    };
    useEffect(() => {
-       if (localStorage.getItem('agentStatus') === null) {
-           props.history.push('/login')
-       }
+      if (localStorage.getItem('agentStatus') === null) {
+         props.history.push('/login');
+      }
       async function getAgentDetails() {
          let res1 = await axios.get(
             `${url}/api/pop/${props.match.params.id}`,

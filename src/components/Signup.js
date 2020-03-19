@@ -1,66 +1,68 @@
 import React, { useState, useEffect } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-const axios = require('axios')
+const axios = require('axios');
 
 const Signup = props => {
-    const url = 'http://localhost:8000'
-    const [credentials, setCredentials] = useState({
-        username: '',
-        email: '',
-        password: '',
-        password2: '',
-        is_agent: false,
-    });
-    const [helpText, setHelpText] = useState('')
+   const url = 'http://localhost:8000';
+   const [credentials, setCredentials] = useState({
+      username: '',
+      email: '',
+      password: '',
+      password2: '',
+      is_agent: false
+   });
+   const [helpText, setHelpText] = useState('');
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (credentials.password !== credentials.password2) {
-           setHelpText('Passwords do not match.')
-        } else {
-            axios.post(`${url}/register`, credentials).then(res => {
-           if (res.data.token) {
-              if (credentials.is_agent === true) {
-                 console.log(res.data)
-                 localStorage.setItem('agentStatus', res.data.boolean)
-                 localStorage.setItem('id', res.data.id)
-                 localStorage.setItem('email', res.data.email);
-                 localStorage.setItem('token', res.data.token)
-                 localStorage.setItem('username', res.data.username)
-                 props.history.push('/set-agent-profile')
-              } else {
-              localStorage.setItem('id', res.data.id)
-              localStorage.setItem('token', res.data.token)
-              localStorage.setItem('username', res.data.username)
-              localStorage.setItem('agentStatus', res.data.boolean)
-              props.history.push('/agency-list')
-              window.location.reload();;
-              }
-           } else if (res.data.username) {
-              setHelpText(res.data.username)
-           } else if (res.data.email) {
-              setHelpText(res.data.email)
-           } else  {
-              setHelpText("NOT DEFINED ERROR")
-           }
-        })
-    }
-   }
+   const handleSubmit = e => {
+      e.preventDefault();
+      if (credentials.password !== credentials.password2) {
+         setHelpText('Passwords do not match.');
+      } else {
+         axios.post(`${url}/register`, credentials).then(res => {
+            if (res.data.token) {
+               if (credentials.is_agent === true) {
+                  console.log(res.data);
+                  localStorage.setItem('agentStatus', res.data.boolean);
+                  localStorage.setItem('id', res.data.id);
+                  localStorage.setItem('email', res.data.email);
+                  localStorage.setItem('token', res.data.token);
+                  localStorage.setItem('username', res.data.username);
+                  props.history.push('/set-agent-profile');
+               } else {
+                  localStorage.setItem('id', res.data.id);
+                  localStorage.setItem('token', res.data.token);
+                  localStorage.setItem('username', res.data.username);
+                  localStorage.setItem('agentStatus', res.data.boolean);
+                  props.history.push('/agency-list');
+                  window.location.reload();
+               }
+            } else if (res.data.username) {
+               setHelpText(res.data.username);
+            } else if (res.data.email) {
+               setHelpText(res.data.email);
+            } else {
+               setHelpText('NOT DEFINED ERROR');
+            }
+         });
+      }
+   };
 
-    const toggleCheckboxThenSend = () => {
-        let status = credentials.is_agent === false ? true : false
-        setCredentials({
-            ...credentials, 
-            is_agent: status
-        })
-    }
+   const toggleCheckboxThenSend = () => {
+      let status = credentials.is_agent === false ? true : false;
+      setCredentials({
+         ...credentials,
+         is_agent: status
+      });
+   };
 
    return (
       <>
          <div>
             <p>Sign Up Below!</p>
-            <em>Have an account already? <a href='/login'>Login</a></em>
+            <em>
+               Have an account already? <a href='/login'>Login</a>
+            </em>
          </div>
          <Form>
             <Form.Group controlId='formBasicText'>
@@ -107,14 +109,21 @@ const Signup = props => {
                <Form.Label>Confirm Password</Form.Label>
                <Form.Control
                   onChange={e => {
-                     setCredentials({ ...credentials, password2: e.target.value });
+                     setCredentials({
+                        ...credentials,
+                        password2: e.target.value
+                     });
                   }}
                   type='password'
                   placeholder='Confirm Password'
                />
             </Form.Group>
             <Form.Group controlId='formBasicCheckbox'>
-               <Form.Check onChange={toggleCheckboxThenSend}type='checkbox' label='Agent?' />
+               <Form.Check
+                  onChange={toggleCheckboxThenSend}
+                  type='checkbox'
+                  label='Agent?'
+               />
             </Form.Group>
             <Button
                onClick={e => handleSubmit(e)}
@@ -123,7 +132,7 @@ const Signup = props => {
             >
                Sign up!
             </Button>
-               <p>{helpText}</p>
+            <p>{helpText}</p>
          </Form>
       </>
    );
