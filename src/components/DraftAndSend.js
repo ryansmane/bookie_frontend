@@ -14,7 +14,9 @@ const DraftAndSend = () => {
    const url = 'https://book-maker-app.herokuapp.com';
    let config = {
       headers: {
-         Authorization: `Token ${localStorage.getItem('token')}`
+         Authorization: `Token ${localStorage.getItem('token')}`,
+         Accept: 'application/json',
+         ContentType: 'application/json' 
       }
    };
 
