@@ -15,9 +15,7 @@ const AgencyList = props => {
    };
 
    useEffect(() => {
-      if (localStorage.getItem('agentStatus') === null) {
-         props.history.push('/login');
-      }
+
       async function getAgencies() {
          let res1 = await axios.get(`${url}/api/agencies`, config);
          setAgencies(res1.data);
@@ -38,8 +36,8 @@ const AgencyList = props => {
                            <Card.Title>{agency.name}</Card.Title>
                            <Card.Text>{agency.info}</Card.Text>
                            <Card.Text>{agency.country}</Card.Text>
-                           <Link to={`agency/${agency.id}`}>
-                              <Button variant='primary'>See Inside</Button>
+                           <Link to={`agency/${agency.id}/${agency.name}`}>
+                              <Button className='login-button' variant='primary'>See Inside</Button>
                            </Link>
                         </Card.Body>
                      </Card>

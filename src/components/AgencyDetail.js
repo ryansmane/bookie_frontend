@@ -9,6 +9,7 @@ const axios = require('axios');
 const AgencyDetail = props => {
    const [agents, setAgents] = useState();
    const [myEmail, setMyEmail] = useState();
+   const [agencyName, setAgencyName] = useState();
    const url = 'https://book-maker-app.herokuapp.com';
    let config = {
       headers: {
@@ -17,6 +18,7 @@ const AgencyDetail = props => {
    };
 
    useEffect(() => {
+      setAgencyName(props.match.params.name.replace('/%20/gi', ' '));
       async function getAgents() {
          let res1 = await axios.get(`${url}/api/pop`, config);
 
@@ -58,12 +60,12 @@ const AgencyDetail = props => {
 
    return (
       <>
+      {agencyName && <h2 className='agency-title'>{agencyName}</h2>}
          <Container className='agent-list'>
             {agents &&
                agents.map(agent => {
                   return (
                      <Card style={{ width: '18rem' }}>
-                        {/* <Card.Img variant='top' src='' /> */}
                         <Card.Body>
                            <Card.Title>
                               <h4>
@@ -94,6 +96,7 @@ const AgencyDetail = props => {
                            <Card.Text></Card.Text>
                            <div className='save-and-view'>
                               <Button
+                              className='login-button'
                                  href={`/agent/${agent.identity}`}
                                  variant='primary'
                               >
@@ -102,7 +105,7 @@ const AgencyDetail = props => {
                               {localStorage.getItem('agentStatus') ===
                                  'false' && (
                                  <Button
-                                    className='save-agent'
+                                    className='login-button'
                                     onClick={() => saveAgent(agent.identity)}
                                     variant='primary'
                                  >

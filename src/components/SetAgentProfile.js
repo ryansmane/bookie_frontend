@@ -75,8 +75,8 @@ const SetAgentProfile = props => {
 
    return (
       <>
-         <h1>Hello Agent {localStorage.getItem('username')}.</h1>
-         <h2>Please fill out the form below to create your agent profile:</h2>
+         <div className='dashboard-article'>
+         <h5>Please fill out the form below to create your agent profile:</h5>
          {agencies && (
             <Form>
                <Form.Group controlId='exampleForm.ControlSelect1'>
@@ -136,7 +136,7 @@ const SetAgentProfile = props => {
                <Form.Group controlId='formBasicCheckbox'>
                   <Form.Label>
                      Are you open to receiving queries?{' '}
-                     <em>Leave unchecked if you are not</em>
+                     <em>Leave unchecked if you are not.</em>
                   </Form.Label>
                   <Form.Check
                      type='checkbox'
@@ -151,7 +151,7 @@ const SetAgentProfile = props => {
                   </Form.Label>
                   <em>
                      Don't worry. If you are not receiving submissions at this
-                     time, authors will not be able to query you.'
+                     time, authors will not be able to query you.
                   </em>
                   <Form.Control
                      onChange={e => {
@@ -177,7 +177,7 @@ const SetAgentProfile = props => {
                      }}
                      as='textarea'
                      rows='6'
-                     placeholder='This will display on your Agent Profile. Feel free to transfer your bio from your agency website our create a new one here. '
+                     placeholder='This will display on your Agent Profile. Feel free to transfer your bio from your agency website or create a new one here. '
                   />
                </Form.Group>
 
@@ -197,15 +197,17 @@ const SetAgentProfile = props => {
                   />
                </Form.Group>
                <Button
+               className='login-button'
                   onClick={e => handleSubmit(e)}
                   variant='primary'
                   type='submit'
                >
-                  Register!
+                  Register
                </Button>
                <p>{helpText}</p>
             </Form>
          )}
+         </div>
       </>
    );
 };

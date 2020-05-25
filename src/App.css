@@ -15,3 +15,94 @@
   flex-direction: row;
   justify-content: space-between;
 }
+
+.dashboard-article {
+  margin: 72px 172px;
+}
+
+header {
+  padding-top: 24px;
+  border-bottom: 2px solid purple
+}
+
+a {
+  color: purple
+}
+
+.login-button {
+  background-color: purple;
+  outline: none;
+  border: none;
+}
+
+.login-button:hover {
+  background-color: purple;
+  outline: none;
+  border: none;
+}
+
+.login-button:focus {
+  background-color: purple;
+  outline: none;
+  border: none;
+}
+
+.login-button:active {
+  background-color: purple;
+  outline: none;
+  border: none;
+}
+
+.login-button:visited {
+  background-color: purple;
+  outline: none;
+  border: none;
+}
+
+
+.login-page {
+  margin: 72px 172px;
+  width: 24%;
+}
+
+.first-p {
+  border-bottom: 2px dotted purple;
+  padding-bottom: 24px;
+}
+
+.aggregate {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  position: absolute; 
+  bottom: 0; 
+  width: 100%;
+  background-color: purple;
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  padding-top: 16px;
+}
+
+.login-cont {
+  display: flex;
+  max-height: 32px;
+}
+
+.login-cont button{
+  background-color: purple;
+  border: none;
+  color: white;
+  margin: 0px 10px;
+  padding: 0px 10px;
+}
+
+.agency-title {
+  text-align: center;
+  padding-top: 8px;
+
+}
