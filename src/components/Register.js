@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 const axios = require('axios');
 
-const Signup = props => {
+const Register = props => {
    const url = 'https://book-maker-app.herokuapp.com';
    const [credentials, setCredentials] = useState({
       username: '',
@@ -23,7 +23,7 @@ const Signup = props => {
             if (res.data.token) {
                if (credentials.is_agent === true) {
                   console.log(res.data);
-                  localStorage.setItem('agentStatus', res.data.boolean);
+                  localStorage.setItem('agentStatus', res.data.boolean ? 'true' : 'false');
                   localStorage.setItem('id', res.data.id);
                   localStorage.setItem('email', res.data.email);
                   localStorage.setItem('token', res.data.token);
@@ -31,10 +31,11 @@ const Signup = props => {
                   props.history.push('/set-agent-profile');
                } else {
                   localStorage.setItem('id', res.data.id);
+                  localStorage.setItem('email', res.data.email);
                   localStorage.setItem('token', res.data.token);
                   localStorage.setItem('username', res.data.username);
-                  localStorage.setItem('agentStatus', res.data.boolean);
-                  props.history.push('/agency-list');
+                  localStorage.setItem('agentStatus', res.data.boolean ? 'true' : 'false');
+                  props.history.push('/');
                   window.location.reload();
                }
             } else if (res.data.username) {
@@ -57,7 +58,7 @@ const Signup = props => {
    };
 
    return (
-      <>
+      <div className='login-page'>
          <div>
             <p>Sign Up Below!</p>
             <em>
@@ -126,6 +127,7 @@ const Signup = props => {
                />
             </Form.Group>
             <Button
+               className='login-button'
                onClick={e => handleSubmit(e)}
                variant='primary'
                type='submit'
@@ -134,8 +136,9 @@ const Signup = props => {
             </Button>
             <p>{helpText}</p>
          </Form>
-      </>
+      </div>
+      
    );
 };
 
-export default Signup;
+export default Register;

@@ -42,12 +42,15 @@ const Home = props => {
    return (
       <>
          {agent.agency && (
-            <>
-               <h1>
+            <div className='dashboard-article' style={{borderLeft: '2px solid purple', paddingLeft: '8px'}}>
+               <h2>
                   {agent.first_name} {agent.last_name}
-               </h1>
-               <h4>{agent.agency.name}</h4>
-            </>
+               </h2>
+               <h5>Agency: {agent.agency.name}</h5>
+               <h5>Genres of Interest: {agent.genres_of_interest}</h5>
+               <h5>Open to submissions: {agent.accepting ? 'Yes' : 'No'}</h5>
+               {agent.accepting && <h5>Preferred contact email: {agent.email}</h5>}
+            </div>
          )}
       </>
    );

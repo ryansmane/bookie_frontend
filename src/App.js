@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import Signup from './components/Signup';
+import Register from './components/Register';
 import Login from './components/Login';
 
 import Dashboard from './components/Dashboard';
@@ -9,6 +9,7 @@ import AgencyList from './components/AgencyList';
 import AgencyDetail from './components/AgencyDetail';
 import SavedAgents from './components/SavedAgents';
 import AgentProfile from './components/AgentProfile';
+import Footer from './components/Footer';
 import DraftAndSend from './components/DraftAndSend';
 import AgencySubmitInfo from './components/AgencySubmitInfo';
 import { Route, Switch } from 'react-router-dom';
@@ -22,6 +23,7 @@ const App = props => {
 
   return (
       <>
+      <div className='aggregate'>
          <header>
             <Header />
          </header>
@@ -29,10 +31,10 @@ const App = props => {
             <Switch>
                
                <Route exact path='/' component={Dashboard} />
-               <Route exact path='/register' component={Signup} />
+               <Route exact path='/register' component={Register} />
                <Route exact path='/login' component={Login} />
                <Route exact path='/agency-list' component={AgencyList} />
-               <Route exact path='/agency/:id' component={AgencyDetail} />
+               <Route exact path='/agency/:id/:name' component={AgencyDetail} />
                <Route exact path='/saved-agents' component={SavedAgents} />
                <Route
                   exact
@@ -49,6 +51,10 @@ const App = props => {
 
             </Switch>
          </main>
+         <footer>
+            <Footer/>
+         </footer>
+         </div>
       </>
    );
 }

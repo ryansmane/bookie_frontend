@@ -41,6 +41,7 @@ const AgencyList = props => {
 
    return (
       <>
+      <div className='dashboard-article'>
          {agents && (
             <>
                <h4>Your saved agents will appear here.</h4>
@@ -57,6 +58,7 @@ const AgencyList = props => {
                            </Card.Title>
                            <Card.Text>{agent.bio}</Card.Text>
                            <Button
+                              className='login-button'
                               href={`/agent/${agent.identity}`}
                               variant='primary'
                            >
@@ -74,6 +76,7 @@ const AgencyList = props => {
                )}
             </>
          )}
+         </div>
       </>
    );
 };

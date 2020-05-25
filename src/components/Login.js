@@ -39,6 +39,7 @@ const Signup = props => {
 
    return (
       <>
+      <div className='login-page'>
          <div>
             <p>
                Login Below! (or register a new account{' '}
@@ -75,6 +76,7 @@ const Signup = props => {
             </Form.Group>
 
             <Button
+               className='login-button'
                onClick={e => handleSubmit(e)}
                variant='primary'
                type='submit'
@@ -83,6 +85,7 @@ const Signup = props => {
             </Button>
             <p>{helpText}</p>
          </Form>
+         </div>
       </>
    );
 };
